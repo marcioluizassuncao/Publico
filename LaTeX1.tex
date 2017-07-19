@@ -1,0 +1,84 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage[latin1]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage[document]{ragged2e}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{floatrow}
+\DeclareFloatFont{tiny}{\tiny}
+\floatsetup[table]{font=tiny}
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{2.5}
+
+\begin{document}
+\begin{titlepage}
+\title{ \begin{huge} \textbf{Pesquisa Sobre o uso de Relés} \end{huge}\\
+\large Para Início das Tarefas de Iniciação Científica 2017/01 \\ Engenharia de Controle e Automação }
+\author{Autores: Mateus Braga e Matheus Cardoso \\ Orientador: Márcio Assunção \\ Professor: Lúcio Passos}
+\maketitle
+\end{titlepage}
+\newpage
+%--------------------------------------------------Introdução----------------------------------------------------------------------
+\section{Introdução}
+\justify
+\quad
+Nesse documento elaborado pelo grupo será discutido de maneira breve o uso de Relés no acionamento de circuitos elétricos, bem como será discutido como um todo seu funcionamento. O grupo achou interessante fornecer alguns exemplos ilustrativos, dessa forma cada explicação será acompanhada de uma imagem, essa será em seguida explicada.
+\subsection{O que é o Relé}
+\justify
+\quad
+O relé é um mecânismo eletromecânico que tem a função de comutar sinais.\\[-0.7cm]
+\justify
+\quad
+Exemplo:\\
+\includegraphics[width=220mm,scale=2.20]{Relay}\\
+\justify
+\quad
+Na imagem temos um contato conectado a uma \textbf{Mola}, esse contato liga um \textbf{Pino Comum} a um pino \textbf{Normalmente Fechado}, isso deve permanecer assim infinitamente até que passemos um sinal para a \textbf{Bobina}, ao passar um sinal para a bobina criamos um campo eletromagnético e atraímos o contato que irá chaviar o pino comum ao pino \textbf{Normalmente Aberto}.\\[-0.7cm]
+\justify
+\quad
+É interessante perceber que a bobina não está conectada elétricamente ao restante dos componentes. O relé é chamado de um elemento eletromecânico por utilizar uma mola e uma correnté elétrica para fazer suas ligações. É importante ressaltar que podemos ter dois tipos de relé, nesse documento será abordado o \textbf{Relé SPDT} e o \textbf{Relé DPDT}.
+\subsection{Single Pole Single Throw (SPST)}
+\justify
+\quad
+Um relé SPDT é um relé conforme o da figura usado para explicar os relés. Ele tem somente um canal ligando um Pino Comum a um Pino Normalmente Fechado ou Normalmente Aberto.
+\subsection{Double Pole Double Throw (DPDT)}
+\justify
+\quad
+Um relé DPDT indica que uma mesma bobina consegue comutar 2 pinos comuns a dois pinos normalmente fechados ou normalmente abertos, um diagrama ilustrativo para esse caso poderia ser:\\[-0.7cm]
+\justify
+\quad
+\includegraphics[width=180mm,scale=1.80]{DPDTRelay}\\
+%----------------------------------------------------------------------------------------------------------------------------------
+\section{Acionamento de Circuitos Elétricos}
+\justify
+\quad
+Um exemplo de acionamento de circuito:\\[-0.7cm]
+\includegraphics[width=180mm,scale=1.80]{CacR}\\
+\justify
+\quad
+Os elementos contidos no exemplo são:\\
+\textbf{1º elemento} : Fonte de Tensão Alternada (110V)
+\textbf{2º elemento} : Lampada (110V)
+\textbf{3º elemento} : Relé (5V)
+\textbf{4º elemento} : Transistor
+\textbf{5º elemento} : Diodo 
+\textbf{6º elemento} : Resistência (250 Ohms)
+\textbf{7º elemento} : LED (4 Miliampère)
+\textbf{8º elemento} : Botão de Acionamento
+\pagebreak
+\begin{thebibliography}{}
+\bibitem {wikipedia}https://pt.wikipedia.org/wiki/Rel\%C3\%A9 \\
+\bibitem {infoescola} http://www.infoescola.com/eletronica/rele/ \\
+\bibitem {newtoncbraga} http://www.newtoncbraga.com.br/index.php/como-funciona/597-como-funcionam-os-reles?showall=1\&limitstart= \\
+\bibitem {youtube} https://www.youtube.com/watch?v=JJd9\_3caX1U \\
+\bibitem {electroschematics} http://www.electroschematics.com/9601/dpdt-switch-relay/ \\
+\bibitem {youtube} https://www.youtube.com/watch?v=MAO5bCr3204 \\
+\bibitem https://www.youtube.com/watch?v=7uXNnC0MRDM \\
+
+
+\end{thebibliography}
+
+
+\end{document}

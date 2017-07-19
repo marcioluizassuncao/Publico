@@ -1,0 +1,116 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage[latin1]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage[document]{ragged2e}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{floatrow}
+\DeclareFloatFont{tiny}{\tiny}
+\floatsetup[table]{font=tiny}
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{2.5}
+
+\begin{document}
+\begin{titlepage}
+\title{ \begin{huge} \textbf{Pesquisa Sobre o uso de Operadores Binários em Linguagem C} \end{huge}\\
+\large Para Início das Tarefas de Iniciação Científica 2017/01 \\ Engenharia de Controle e Automação }
+\author{Autores: Mateus Braga e Matheus Cardoso \\ Orientador: Márcio Assunção \\ Professor: Lúcio Passos}
+\maketitle
+\end{titlepage}
+\newpage
+%--------------------------------------------------------------------------------Op----------------------
+\section{Tabela de Operadores Binários}
+\begin{center}
+{\rowcolors{2}{green!80!yellow!50}{green!70!yellow!40}
+\begin{tabular}{ |p{2.5cm}|p{2cm}| }
+\hline
+\multicolumn{2}{|c|}{Device Features} \\
+\hline
+Operador & Nome\\
+\hline
+\& & AND \\
+$|$ & OR inclusivo\\
+. \textbf{\^}  & OR exclusivo\\
+$<<$ & Deslocamento à esquerda\\
+$>>$ & Deslocamento à direita\\
+. \textbf{\~} & Complemento\\
+\hline
+\end{tabular}
+}
+\end{center}
+%--------------------------------------------------------------------------------------------------------
+\section{Operador}
+\subsection{And \&}
+\justify
+\quad
+O operador And funciona comparando bit-a-bit de um número com outro, de forma que funciona semelhante a uma porta lógica And.\\[-0.7cm]
+\justify
+\quad
+Porta AND:\\
+\includegraphics[width=30mm,scale=0.30]{portlog}\\
+Exemplo em Código:\\
+\includegraphics[width=150mm,scale=1.50]{C1}\\
+
+\subsection{OR inclusivo \|}
+\justify
+\quad
+O operador OR inclusivo funciona comparando bit-a-bit de um número com outro, de forma que se um dos bits comparados for 1 a saída já é automaticamente 1. Funciona como uma porta OR\\[-0.7cm]
+\justify
+\quad
+Porta OR:\\
+\includegraphics[width=30mm,scale=0.30]{portlog2}\\
+Exemplo em Código:\\
+\includegraphics[width=150mm,scale=1.50]{C2}\\
+
+\subsection{OR exclusivo \|}
+\justify
+\quad
+O operador OR exclusivo funciona comparando bit-a-bit de um número com outro, de forma que se os bits comparados forem diferentes a saída será 1. Funciona como a porta XOR.\\[-0.7cm]
+\justify
+\quad
+Porta XOR:\\
+\includegraphics[width=80mm,scale=0.80]{portlog3}\\
+Exemplo em Código:\\
+\includegraphics[width=150mm,scale=1.50]{C3}\\
+
+\subsection{Deslocamento a Esquerda $<<$}
+\justify
+\quad
+O operador Deslocamento a esquerda funciona deslocando todos os bits do número para esquerda e completando a última casa com zero. Funciona como uma multiplicação por 2.\\[-0.7cm]
+\justify
+\quad
+Exemplo em Código:\\
+\includegraphics[width=180mm,scale=1.80]{C4}\\
+
+\subsection{Deslocamento a Direita $>>$}
+\justify
+\quad
+O operador Deslocamento a direita funciona deslocando todos os bits do número para direita e completando a primeira casa com zero. Funciona como uma divisão por 2.\\[-0.7cm]
+\justify
+\quad
+Exemplo em Código:\\
+\includegraphics[width=180mm,scale=1.80]{C5}\\
+
+\subsection{Complemento}
+\justify
+\quad
+O operador complemento funciona realizando a técnica de inverter bit-a-bit de um número.Dessa forma, assim como o operador de deslocamento a direita e deslocamento a esquerda, atua sobre um único número. O seu resultado sempre será o número negativo com seu módulo acrescido de uma unidade (estará escrito na forma de complemento de 2). Aplicar essa operação duas vezes em um número sempre resultado nele mesmo.\\[-0.7cm]
+\justify
+\quad
+Exemplo em Código:\\
+\includegraphics[width=180mm,scale=1.80]{C6}\\
+\pagebreak
+
+\begin{thebibliography}{}
+\bibitem {embarcados} https://www.embarcados.com.br/xor/\\
+\bibitem {dpi} http://www.dpi.inpe.br/\~carlos/Academicos/Cursos/ArqComp/aula\_5bn1.html\\
+\bibitem {pythontutor} http://www.pythontutor.com/c.html\#mode=edit \\
+\bibitem {wikipedia} https://en.wikipedia.org/wiki/Bitwise\_operations\_in\_C \\
+\bibitem {tutorialspoint} http://www.tutorialspoint.com/cprogramming/c\_bitwise\_operators.htm \\
+
+\end{thebibliography}
+
+
+\end{document}

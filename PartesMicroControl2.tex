@@ -1,0 +1,550 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage[latin1]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage[document]{ragged2e}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{2.5}
+\newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}}
+\arrayrulecolor[HTML]{DB5800}
+%\graphicspath{ {c:/Arquivos de Programas/Imagens/} }
+
+% --------------------------------------------------------- Título -------------------------------------
+\begin{document}
+\begin{centering}	
+\begin{titlepage}
+\title{ \begin{huge} \textbf{Pesquisa de Componentes Usados Em Microcontroladores} \end{huge}\\
+\large Para Início das Tarefas de Iniciação Científica 2017/01 \\ Engenharia de Controle e Automação }
+\author{ Lúcio Passos, Márcio Assunção, Mateus Braga e Matheus Cardoso }
+\maketitle
+\end{titlepage}
+\end{centering}
+\newpage
+\tableofcontents
+\newpage
+%-------------------------------------------------------Tabela de Int------------------------------------
+\section{ Tabelas de Siglas que Serão Usadas no Texto }
+\subsection{ Tabela 1 }
+\justify
+\quad
+\begin{tabular}{ |s|p{3cm}|p{3cm}|  }
+\hline
+\rowcolor{lightgray} \multicolumn{3}{|c|}{Lista de Siglas} \\
+\hline
+Sigla & Significado & Citada no pdf \\
+\hline
+RAM & Random-access memory & SIM \\
+ROM & Read-only memory & SIM \\
+CPU & Central Processing Unit & SIM \\
+MIPS & Millions of Instructions Per Second & SIM \\
+LCD & Liquid Crystal Display & SIM \\
+USB & Universal Serial Bus & SIM \\
+$I^2C$ & Inter-Integrated Circuit & SIM \\
+IrDA & Infrared Data Association & SIM \\
+LIN & Local Interconnect Network & SIM \\
+SCI & Serial Communication Interface & SIM \\
+SPI & Serial Peripheral Interface & SIM \\
+\hline
+\end{tabular}
+
+\subsection{ Tabela 2 }
+\begin{tabular}{ |s|p{3cm}|p{3cm}|  }
+\hline
+\rowcolor{lightgray} \multicolumn{3}{|c|}{Lista de Siglas} \\
+\hline
+Sigla & Significado & Citada no pdf \\
+\hline
+EEPROM & Electrically-Erasable Programmable Read-Only Memory & SIM \\
+EPROM & Erasable Programmable Read-Only Memory & NÃO \\
+GPIO & General Purpose Input/Output & SIM \\
+FIFO & First In, First Out & NÃO \\
+DMA & Direct Memory Access & SIM \\
+POR & Power-On Reset & SIM \\
+PWM & Pulse-Width Modulation & SIM \\
+WDT & Watchdog Timers & SIM \\
+UPS & Uninterruptible Power Supply & NÃO \\
+PDM & Pulse Density Modulation & NÃO \\
+BOD & Brown-Out Detection & SIM \\
+\hline
+\end{tabular}
+
+\subsection{ Tabela 3 }
+\begin{tabular}{ |s|p{3cm}|p{3cm}|  }
+\hline
+\rowcolor{lightgray} \multicolumn{3}{|c|}{Lista de Siglas} \\
+\hline
+Sigla & Significado & Citada no pdf \\
+\hline
+UART & Universal Asynchronous Receiver/Transmitter & SIM \\
+USART & Universal Synchronous Asynchronous Receiver/Transmitter & SIM \\
+VLSI & Very-large-scale integration & NÃO \\
+IC & Integrated Circuit & SIM \\
+MCU & Microcontroller Unit & SIM \\
+SoC & System-on-a-Chip & NÃO \\
+LED & Light-Emitting Diode & NÃO \\
+\hline
+\end{tabular}
+%--------------------------------------------------------Primeira Seção ---------------------------------
+\section{ Introdução a Microcontroladores e ao Método de Pesquisa }
+\subsection{  Microcontroladores }
+\justify
+\quad
+Os microcontroladores (MCU) são sistemas computacionais completos, contendo uma CPU (unidade central de processamento), memória para armazenamento de dados e programas (RAM e ROM), conversores de sinais (Analógico/Digital e Digital/Analógico), sistema de Clock e portas do tipo Input e Output para comunicação da CPU com o ambiente externo.\\[-0.7cm]
+\justify
+\quad
+O trabalho do grupo no resumo de atividades apresentado será elaborar alguns critérios para a escolha correta de um Microcontrolador para realizar nossas atividades, bem como termos a preocupação em explicar os componentes a serem analisados para uma boa escolha de um MCU.
+\justify
+\quad
+Para comerçarmos a estudar os MCUs, devemos primeiro ter em mente a distinção entre Microcontrolador e Microprocessador. O primeiro é um pequeno computador (SoC) em um único circuito integrado o qual contém um núcleo de processador, memória e periféricos programáveis de entrada e saída. Contém três partes básicas, sendo elas: Processador, memória e I/O. Já o microprocessador é O microprocessador, geralmente chamado apenas de processador, é um circuito integrado que realiza as funções de cálculo e tomada de decisão de um computador. Portanto, podemos dizer que o MIP é uma parte do MCU.
+\subsection{ Critérios de Escolha }
+\justify
+\quad
+Para esse trabalho vamos simular uma compra de microcontrolador no site digikey. Ao fazer essa simulação, iremos levar em conta a apresentação de cada componente, bem como sua contribuição para o custo final do MCU e sua respectiva função.\\[-0.7cm]
+\justify
+\quad
+Ao escolher um microcontrolador devemos pensar, em primeiro lugar, na função que ele vai desempenhar no nosso sistema, em seguida devemos observar cada escolha de componente para dosar de maneira correta nossas compras (escolhendo componentes muito potentes podemos realizar uma compra muito cara e que usa uma estrutura muito complexa para resolver uma tarefa simples; escolhendo componentes simples podemos efetuar uma compra barata, mas que não resolve nossos problemas).\\[-0.7cm]
+\justify
+\quad
+A primeira escolha feita pelo grupo foi com relação a família de microcontroladores que será escolhida para realizar nossos trabalhos, junto com o professor Márcio foi escolhida a família \textbf{MSP430} fabricada pela \textbf{Texas Instruments}. É possível perceber, com uma rápida busca online, que essa linha é indicada para tarefas cujo desempenho não requer muito poder de processamento e que a linha escolhida é uma linha de custo menor (essas especificações são coerentes com nosso propósito por estarmos utilizando nossos microcontroladores para operar em plantas didáticas, portanto não necessitamos de MCUs extremamente caros e complexos).
+%-------------------------------------------------------Primeirae/2 Seção--------------------------------
+
+\section{ Series }
+\justify
+\quad
+Para essa seção será feito um resumo de cada série de Microcontroladores da família \textbf{MSP430} fabricado pela \textbf{Texas Instruments}.\\[-0.7cm]
+\subsection{ MSP430x1xx series }
+\justify
+\quad
+É uma geração básica de microcontroladores sem um controlador de LCD embutido, oferecem 8 MIPS, possuem operação entre $1.8-3.6V$ e diversos periféricos analógicos/digitais.\\ [-0.7cm]
+\justify
+\quad
+Especificações:
+\begin{center}
+    \begin{tabular}{ |s|p{3cm}|  }
+		\hline
+		\rowcolor{lightgray} \multicolumn{2}{|c|}{Specs MSP430x1xx } \\
+		\hline
+    Power specification overview, as low as: & Device parameters: \\ \hline
+    0.1 $\mu$A RAM retention & Flash options: 1–60 KB \\ \hline
+    0.7 $\mu$A real-time clock mode & ROM options: 1–16 KB \\ \hline
+    200 $\mu$A / MIPS active & RAM options: 128 B–10 KB \\ \hline
+		Features fast wake-up from standby mode in less than 6 $\mu$s. & GPIO options: 14, 22, 48 pins \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\subsection{ MSP430F2xx series }
+\justify
+\quad
+Essa série opera de maneira semelhante à série 1xx, entretanto consegue operar com um menor gasto energético se comparado com a série 1xx. Seu tempo de Clock é mais preciso, pode operar entre $1.8-3.6V$ e consegue entrar em standby mode, podendo sair dessa condição em menos de 1 micro-segundo.\\[-0.7cm]
+\justify
+\quad
+Especificações:
+\begin{center}
+    \begin{tabular}{ |s|p{3cm}|  }
+		\hline
+		\rowcolor{lightgray} \multicolumn{2}{|c|}{Specs MSP430F2xx} \\
+		\hline
+    Power specification overview, as low as & Device parameters \\ \hline
+    0.1 $\mu$A RAM retention & Flash options: 1–120 KB  \\ \hline
+    0.3 $\mu$A standby mode (VLO) & RAM options: 128 B–8 KB	  \\ \hline
+		0.7 $\mu$A real-time clock mode & GPIO: 10, 11, 16, 24, 32, 48 pins \\ \hline
+    220 $\mu$A / MIPS active & ADC:Slope,10e12-bitSAR,16e24-bitSigDelt \\ \hline
+		Fast wake-up from standby mode in less than 1 $\mu$s. & Other integrated peripherals \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\subsection{ MSP430G2xx series }
+\justify
+\quad
+Seu funcionamento é semelhante ao da série F2xx, entretanto possui MCU com 16 MIPS, por ter uma menor quantidade de pinos I/O e menores opções pra memória flash e RAM costuma ser mais barata que série F2xx.
+\justify
+\quad
+Especificações:
+\begin{center}
+    \begin{tabular}{ |s|p{3cm}|  }
+		\hline
+		\rowcolor{lightgray} \multicolumn{2}{|c|}{Specs MSP430G2xx} \\
+		\hline
+    Power specification overview, as low as & Device parameters \\ \hline
+    0.1 $\mu$A RAM retention & Flash options: 0.5–56 KB  \\ \hline
+    0.4 $\mu$A standby mode (VLO) & RAM options: 128 B–4 KB	  \\ \hline
+		0.7 $\mu$A real-time clock mode & GPIO: 10, 11, 16, 24, 32 pins \\ \hline
+    220 $\mu$A / MIPS active & ADC options:Slope,10-bitSAR\\ \hline
+		Ultra-Fast Wake-Up From Standby Mode in $<$1 $\mu$s. & Other integrated peripherals \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\subsection{ MSP430x3xx series }
+\justify
+\quad
+É uma geração mais antiga da família MSP430, se não a mais antiga, possui um controlador LCD embutido e pode operar entre $2.5-5.5V$ e consegue sair do standby mode em menos de 1 micro-segundo.
+\justify
+\quad
+Especificações:
+\begin{center}
+    \begin{tabular}{ |s|p{3cm}|  }
+		\hline
+		\rowcolor{lightgray} \multicolumn{2}{|c|}{Specs MSP430x3xx} \\
+		\hline
+    Power specification overview, as low as & Device parameters \\ \hline
+    0.1 $\mu$A RAM retention & ROM options: 2–32 KB  \\ \hline
+    N.D.A & RAM options: 512 B–1 KB	  \\ \hline
+		0.9 $\mu$A real-time clock mode & GPIO: 14, 40 pins \\ \hline
+    160 $\mu$A / MIPS active & ADC options:Slope,14-bitSAR\\ \hline
+		Fast wake-up from standby mode $<$6 $\mu$s. & Other integrated peripherals:LCD
+		controller, multiplier \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\subsection{ MSP430x4xx series }
+\justify
+\quad
+Parecido com a série 3xx, entretanto possui LCD integrado e é maior e possui mais opções de memória, além de poder operar entre $1.8-3.6V$ (considerado um bom MCU para aplicações médicas).
+\justify
+\quad
+Especificações:
+\begin{center}
+    \begin{tabular}{ |s|p{3cm}|  }
+		\hline
+		\rowcolor{lightgray} \multicolumn{2}{|c|}{Specs MSP430x4xx} \\
+		\hline
+    Power specification overview, as low as & Device parameters \\ \hline
+    0.1 $\mu$A RAM retention & Flash/ROM options 4–120 KB  \\ \hline
+    N.D.A & RAM options: 256 B–8 KB	  \\ \hline
+		0.7 $\mu$A real-time clock mode & GPIO:14, 32, 48, 56, 68, 72, 80 pins \\ \hline
+    200 $\mu$A / MIPS active & ADC:Slope,10e12-bitSAR,16-bitSigDelt\\ \hline
+		Fast wake-up from standby mode $<$6 $\mu$s. & Other integrated peripherals \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\subsection{ MSP430x5xx series }
+\justify
+\quad
+Série nova, possui processamento de até 25MHz, MCU com 25 MIPS (os quais consomem menos energia que de séries anteriores) e já possui porte de USB integrado.
+\justify
+\quad
+Especificações:
+\begin{center}
+    \begin{tabular}{ |s|p{3cm}|  }
+		\hline
+		\rowcolor{lightgray} \multicolumn{2}{|c|}{Specs MSP430x5xx} \\
+		\hline
+    Power specification overview, as low as & Device parameters \\ \hline
+    0.1 $\mu$A RAM retention & Flash options up to 512KB  \\ \hline
+    N.D.A & RAM options: up to 66KB	  \\ \hline
+		2.5 $\mu$A real-time clock mode & GPIO:29, 31, 47, 48, 63, 67, 74, 87 pins \\ \hline
+    165 $\mu$A / MIPS active & ADC:10 e 12-bit SAR\\ \hline
+		Fast wake-up from standby mode $<$5 $\mu$s. & Other integrated peripherals \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\subsection{ MSP430x6xx series }
+\justify
+\quad
+Possui especificações muito parecidas com a série 5xx, apesar de ser menos flexível com a quantidade de pinos I/O.
+\justify
+\quad
+Especificações:
+\begin{center}
+    \begin{tabular}{ |s|p{3cm}|  }
+		\hline
+		\rowcolor{lightgray} \multicolumn{2}{|c|}{Specs MSP430x6xx} \\
+		\hline
+    Power specification overview, as low as & Device parameters \\ \hline
+    0.1 $\mu$A RAM retention & Flash options up to 512KB  \\ \hline
+    N.D.A & RAM options: up to 66KB	  \\ \hline
+		2.5 $\mu$A real-time clock mode & GPIO:74 pins \\ \hline
+    165 $\mu$A / MIPS active & ADC:12-bit SAR\\ \hline
+		Fast wake-up from standby mode $<$5 $\mu$s. & Other integrated peripherals \\
+    \hline
+    \end{tabular}
+\end{center}
+
+
+
+%--------------------------------------------------------Segunda Seção----------------------------------
+\section{ Packaging }
+\justify
+\quad
+Ao entrarmos no site da digikey podemos perceber que para comprar um produto precisamos de aplicar filtros para a nossa compra. Os primeiros dois filtros necessários já foram discutidos, o primeiro fora o fabricador do nosso MCU (o fabricador escolhido fora a \textbf{Texas Instruments}) e o segundo filtro fora a família e a série (a família escolhida fora a \textbf{MST430}). Agora vamos tratar dos outros filtros restantes, a começar pelo packaging. Esse filtro indica o tipo de "embalagem" em que se encontram nossos circuitos integrados, essa parte da escolha é importante pois cada uma possui alguma propriedade específica e de interesse para a portabilidade do nosso MCU.\\[-0.7cm]
+\subsection{ Cut Tape}
+\justify
+\quad
+O tipo de embalagem Cut Tape é frequentemente usado para empacotar os circuitos integrados dos microcontroladores, uma vantegem para seu uso é seu tamanho uma vez que essa embalagem se assemelha muito a Tape \& Reel entretanto possui suas fitas fatiadas, diminuindo o tamanho da embalagem e seu custo, o acesso aos componentes possuí poucas diferenças entretanto a Cut Tape apresenta esse acesso um pouco mais demorado.
+\subsection{ Tape \& Reel }
+\justify
+\quad
+A embalagem Tape \& Reel é, também, muito frequente ao analisarmos as opções de packaging.Essa embalagem possívelmente possui um custo maior que a Cut Tape por acessar mais rápidamente seus componentes e também por possuir um tamanho maior para o uso de componentes, sem fitas fatiadas.
+\subsection{ Tray }
+\justify
+\quad
+A embalagem do tipo Tray é usada quando estamos trabalhando com uma maior superfície, dessa forma teremos componentes maiores e possivelmente mais caros.
+\subsection{ Tube }
+\justify
+\quad
+São embalagens usadas para proteger os componentes enquanto os mesmos estão sendo transportados por návio, geralmente é possível guardar uma quantidade menor de componentes nesse tipo de embalagem.
+
+%--------------------------------------------------------------Quinta Seção-----------------------------
+\section{ Core Processor }
+\subsection{CPUXV2}
+\justify
+\quad
+A família MSP430 está munida com o processador CPUXV2 que é um processador mais barato mas capaz de realizar certas tarefas com uma velocidade satisfatória. A velocidade máxima para esse processador é 25 MHz, entretanto no site da DigiKey é possível recorrer a uma versão de velocidade inferior (no caso as velocidades inferiores dependem da série que será escolhida, a exeplo a série 5xx só pode ser escolhida com processamento de 18,20 ou 25 MHz, séries mais antigas podem ser escolhidas com um processamento mais devagar).
+
+%------------------------------------------------------------Sexta Seção---------------------------------
+\section{ Connectivity }
+\subsection{ $I^2C$ }
+\justify
+\quad
+O barramento $I^2C$ que foi desenvolvido pela Philips é usado para conectar periféricos de baixa velocidade para uma placa mãe, sistema embarcado ou telefone celular (no nosso caso será utilizado para conectar os periféricos ao nosso sistema embarcado que contém a CPUXV2 como core).
+\subsection{ IrDA }
+\justify
+\quad
+IrDA é a associação que desenvolveu um padrão de comunicação sem fio entre aparelhos eletrônicos por meio de ondas infravermelho, o MCU da família MSP430 pode vir equipado com essa tecnologia que é barata. Apesar do preço barato a IrDA possui limitações no que tange a distância entre o MCU e o aparelho que vai ser comunicado, bem como limitações na velocidade de transmissão de dados.
+\subsection{ LIN }
+\justify
+\quad
+O sistema LIN, ao que indica algumas pesquisas feitas pelo autor, aparenta ser um sistema para conforto utilizado em automóveis. A tecnologia LIN possui aplicações em MCUs no que tange ao microchip LIN que possui uma série de circuitos integrados usados, por exemplo para regular a voltagem, além de desempenhar outras funções.
+\subsection{ SCI }
+\justify
+\quad
+O componente SCI é o componente que habilita a troca de dados bit-a-bit (one bit at a time) entre os nossos microprocessadores e os periféricos, o componente SCI pode, inclusive, habilitar a comunicação com uma rede de dados externa.
+\subsection{ SPI }
+\justify
+\quad
+A interface SPI é usada para troca de dados entre os MCUs e seus periféricos. Sua função é parecida com a função do SCI. Uma diferença entre o sistema SPI e o sistema SCI é a velocidade e a distância, além de que o sistema SCI comunica o microprocessador com os periféricos do MCU e o SPI comunica o MCU com sensores e outros.\\[-0.7cm]
+\justify
+\quad
+A interface SPI possui um clock mestre e suporta diversos escravos, possui uma maior velocidade de comunicação enquanto que a SCI, por ser uma comunicação serial, possui vantagens em seu alcance (longo alcance).
+\subsection{ UART }
+\justify
+\quad
+UART é um microchip programável que controla a interface do computador com aparelhos conectados serialmente. Nas pesquisas feitas pelos alunos foi observado que a UART é mencionada como a comunicação serial usada nos MCUs e majoritariamente não se utiliza o termo SCI. Entretanto, foi mencionado ambos os termos pois estamos lidando com os dois ao acessar o site da DigiKey, que será o site utilizado para realizar nossa compra final.
+\subsection{ USART }
+\justify
+\quad
+Assim como a UART a USART serve para facilitar a conexão do nosso computador com aparelhos externos conectados. Entretanto, uma USART oferece o modo síncrono de comunicação, esse modo não é disponível na UART, e dessa forma para os aparelhos se interligarem é necessário um pulso de Clock e tal comunicação é feita por turnos fixos (na UART as informações não são transmitidas com um sinal de Clock e logo não precisam de turnos fixos,portanto a UART transmite sempre a informação bit-a-bit enquanto a USART pode transporta blocos de informações).
+%-------------------------------------------------------------Peripherals--------------------------------
+\section{ Peripherals }
+\subsection{ Brown-out Detect/Reset }
+\justify
+\quad
+São periféricos que vem junto ao nosso microcontrolador para monitorar o suprimento de Voltagem durante o período de operação, é essa a função de um circuito BOD. Dessa forma, quando o BOD detecta que o suprimento de Voltagem obteve uma queda significativa ao alimentar o nosso MCU o sistema Brown-out Reset vai fazer com que o processador sofra um reset (ou reboot). Ou seja nesse periférico temos uma dupla de circuitos que trabalham juntos, um detecta uma queda na alimentação e mediante isso o outro faz com que o processador sofra um reset.
+\subsection{ DMA }
+\justify
+\quad
+É um periférico que permite que outros periféricos tenham controle sobre a memória da CPU de maneira direta. Um controlador DMA, portanto, permite que a CPU compartilhe o seu memory bus.
+\subsection{ POR }
+\justify
+\quad
+É um periférico que vai detectar a potência aplicada no nosso chip e gerar um pulso reset em todo sistema, dessa forma é possível determinar um estado inicial para todo sistema uma vez que o microcontrolador é ligado.\\[-0.7cm]
+\justify
+\quad
+O sistema POR usa um capacitor a ser carregado, ligado em série com um resistor, para medir o período de tempo que o resto do circuito é colocado em um estado considerado como reset.
+\subsection{ PWM }
+\justify
+\quad
+O periférico PWM controla a potência para os aparelhos elétricos, no caso o nosso microcontrolador, muitas vezes é usado em motores. A sigla PWM significa pulse-width modulation e representa uma técnica de codificação de mensagens por meio de um sinal pulsante, dessa forma o periférico usa dessa técnica para realizar suas funções.
+\subsection{ WDT }
+\justify
+\quad
+Os WDT são usados para forçar um reboot ou reset no sistema quando o mesmo apresenta alguma desordem ou falha crítica em um determinado estado. Os WDT podem receber um refresh a cada interválo de tempo, caso algo faça com que o WDT não seja acionado no intervalo previsto o WDT assum que ocorreu uma falha e portanto o sistema irá sofrer um reboot. Vale ressaltar que independente do caso, seja um atraso no refresh ou o refresh chegando antes do previsto, o WDT irá fazer o reboot do sistema. 
+%-------------------------------------------------------------Sensores-----------------------------------
+\section{Sensores}
+ \subsection{Módulo Bluetooth}
+ Este módulo bluetooth HC-05 é uma forma mais acessível de comunicação com o MCU. Este módulo suporta o modo \textbf{meste} e \textbf{escravo}. Possui também um LED que indica se o módulo está pareado com algum outro dispositivo.\\
+ \textbf{Especificações}:\\
+ - Protocolo Bluetooth: v2.0+EDR\\
+ - Firmware: Linvor 1.8\\
+ - Frequência: 2,4GHz Banda ISM\\
+ - Modulação: GFSK\\
+ - Emissão de energia: <=4dBm, Classe 2\\
+ - Sensibilidade: <=84dBm com 0,1% BER\\
+ - Velocidade Assíncrono: 2,1Mbps(Max)/160Kbps\\
+ - Velocidade Síncrono: 1Mbps/1Mbps\\
+ - Segurança: Autentificação e Encriptação\\
+ - Perfil: Porta Serial Bluetooth\\
+ - Suporta modo Escravo (Slave) e Mestre (Master)\\
+ - CSR chip: Bluetooth v2.0\\
+ - Banda de Onda: 2,4Hhz-2,8Ghz, Banda ISM\\
+ - Tensão: 3,3v (2,7-4.2v)\\
+ - Corrente: Pareado 35mA; Conectado 8mA\\
+ - Temperatura: $-40 ~ +105°C$\\
+ - Alcance: 10m\\
+ - Baud Rate: 4800;9600;19200;38400;57600;115200;230400;460800;921600;1382400\\
+ - Dimensões: 26,9 x 13 x 2,2mm\\
+ - Peso: 9,6g\\
+ 
+ \subsection{Sensor de distância}
+ O Sensor ultrassônico HC-SR04 é capaz de medir distâncias de 2cm a 4m com ótima precisão e baixo preço. Este módulo possui um circuito pronto com emissor e receptor acoplados e 4 pinos (VCC, Trigger, ECHO, GND) para medição. É necessário utilizar uma fórmula para cacular a distância real, que é dada por:
+ $$Distância = [Tempo ECHO em nível alto * Velocidade do Som] / 2$$
+ 
+ \textbf{Especificações}:\\
+ - Alimentação: 5V DC\\
+ - Corrente de Operação: 2mA\\
+ - Ângulo de efeito: 15°\\
+ - Alcance.: 2cm ~ 4m\\
+ - Precisão.: 3mm\\
+ 
+ 
+ \subsection{Sensor de Umidade e Temperatura}
+ O DHT11 é um sensor de temperatura e umidade que permite fazer leituras de temperaturas entre 0 a 50 Celsius e umidade entre 20 a 90\%, muito usado para projetos com Arduino.\\
+ \textbf{Especificações}:\\
+ - Modelo: DHT11 (Datasheet)\\
+ - Faixa de medição de umidade: 20 a 90% UR\\
+ - Faixa de medição de temperatura: 0º a 50ºC\\
+ - Alimentação: 3-5VDC (5,5VDC máximo)\\
+ - Corrente: 200uA a 500mA, em stand by de 100uA a 150 uA\\
+ - Precisão de umidade de medição: ± 5,0% UR\\
+ - Precisão de medição de temperatura: ± 2.0 ºC\\
+ - Tempo de resposta: 2s\\
+ - Dimensões: 23 x 12 x 5mm (incluindo terminais)\\
+ 
+ \subsection{Sensor de Nível de Água}
+ O sensor de nível funciona como uma chave liga-desliga que pode acionar chaves, bombas, lâmpadas ou enviar um sinal para o microcontrolador como o Arduino, Pic ou Raspberry Pi. Pode ser utilizado tanto na parte superior do recipiente como na parte inferior, pois possui um anel de vedação (o-ring) e travamento por porca. O sensor deve ser instalado na posição vertical.\\
+ \textbf{Especificações}:\\
+ - Sensor de Nível\\
+ - Material: Plástico PP\\
+ - Tensão máxima: 100V DC\\
+ - Corrente máxima: 1A\\
+ - Carga máxima: 50W\\
+ - Resistência máxima do contato: 0,4 ohms\\
+ - Comprimento do cabo: 36cm\\
+ - Faixa de temperatura: -20 a 80ºC\\
+ - Peso: 12g\\
+ - Dimensões: 50 x 19mm\\
+%--------------------------------------------------------------I/O---------------------------------------
+\section{ Number of I/O }
+\subsection{ Pinos Input/Output }
+\justify
+\quad
+Essa seção diz respeito ao número de portas para a comunicação da CPU com o ambiente externo, ou seja o número de pinos para, por exemplo, LEDs, conexões externas, sensores de temperatura e outros.\\[-0.7cm]
+\justify
+\quad
+Cada série da família MSP430 pode apresentar diferentes opções para a quantidade de entras Input/Output, vale lembrar que quanto maior a quantidade de portas maior o preço do nosso produto final, portanto é importante analisar no sistema a quantidade de portas que serão necessárias, pois se selecionarmos um modelo com quantidade excessiva podemos pagar mais para fazer a mesma coisa que um modelo mais modesto seria capaz de realizar. Podemos citar o exemplo da série 5xx que possui as opções de conter 17,29,31,37,38,47,53,63,67,74 ou 87 pinos I/O, escolher um modelo com 87 pinos para um projeto como o nosso é desperdício de recurso, pois o MCU custaria caro e com certeza não iremos usar tantos pinos.
+
+%------------------------------------------------------------PM size-------------------------------------
+\section{ Program Memory Size }
+\subsection{ Flash Memory }
+\justify
+\quad
+A memória Flash é uma memória do tipo EEPROM, não-volátil (ou seja, diferentemente da RAM, volátil; a memória flash não precisa de energia para manter suas informações armazenadas).\\[-0.7cm]
+\justify
+\quad
+A memória flash pode ser reprogramável, ou seja, ela pode ter um conteúdo deletado em função de armazenar um novo. No site da DigiKey, a memória flash está sendo referenciada como Program Memory Size pois é nela que iremos guardar parte dos nossos códigos já traduzidos para binário e caso o código não funcione podemos deletá-lo e escrever/armazenar outro em seu lugar. Size se refere ao tamanho desse tipo de memória podendo variar com a série de microcontroladores que estamos escolhendo. A série 5xx pode variar seu tamanho de Program Memory entre 8KB e 512KB, outras séries podem ter intervalos começando de valores menores e com menor intervalo.
+%-------------------------------------------------------RAM----------------------------------------------
+\section{ RAM size }
+\subsection{ Memória RAM }
+\justify
+\quad
+Em todo tipo de computador a memória RAM está presente; como já vimos que um MCU é um pequeno computador aqui não seria diferente, e sua presença é muito importante.\\[-0.7cm]
+\justify
+\quad
+A memória RAM possui as funções de escrita-leitura e por ser uma memória volátil ela não mantém a data após ter seu suprimento de energia cortado. Portanto, a função da RAM em um MCU é, basicamente, trabalhar com nossas variáveis, uma vez que elas mudam muito e quando estamos trabalhando com uma planta didática de um trocador de calor. Por exemplo, ao lermos as temperaturas indicadas em um painel podemos armazenar esses dados desde anotando em um papel (maneira rudimentar) até, por exemplo, usando um software externo para armazenar esses dados em tabela (como por exemplo o Excel), de forma que ao desligar a planta não é necessário manter esses valores registrados para um próximo uso.
+
+%-----------------------------------------------------------Voltagem-------------------------------------
+\section{ Voltage - Supply (Vcc/Vdd) }
+\subsection{ Intervalos de Voltagem }
+\justify
+\quad
+A escolha que deve ser feita aqui é definir qual será o intervalo de Voltagem necessário para manter nosso MCU funionando, intervalos menores são satisfatórios para um menor consumo de energia e a família MSP430 é um destaque nesse quesito.\\[-0.7cm]
+\justify
+\quad
+A série 5xx, por exemplo, possui dois intervá-los de operação que podem ser definidos na hora da compra, podemos escolher tanto $1.8-3.6V$, bem como $2.2-3.6V$. Séries mais antigas como a 3xx possuem intervalos de operação maiores (no exemplo em questão $2.5-5.5V$).
+%----------------------------------------------------------Data Converters-------------------------------
+\section{ Data Converters }
+\justify
+\quad
+Essa seção diz respeito aos conversores analógico/digital e digital/analógico. Acreditamos que um conversor analógico/digital para o nosso projeto seja o mais importante, pois queremos pegar algum dado do meio externo que estão disponíveis de forma analógica (o som,temperatura,pressão poderiam ser alguns exemplos) e transformar em código binário digital, para ser trabalhado em nosso MCU.
+\subsection{ Conversor Analógico-Digital }
+\justify
+\quad
+O conversor vai capturar informações no ambiente externo e converter esse sinal para uma representação digital, essa representação vem na forma binária e muitas vezes esses conversores são capazes de fornecer erro, que na verdade é a quantidade de informação perdida.
+\subsection{ Conversor Digital-Analógico }
+\justify
+\quad
+O conversor apresenta como valores de input uma série de códigos binários e como output uma conversão aproximada de um sinal analógico, muitas vezes é usado a palavra sinal analógico discreto para indicar que essa aproximação está sugeita a erros.
+\subsection{ Como encontramos isso no DigiKey }
+\justify
+\quad
+No site da DigiKey temos no filtro Data Converters que escolher se vamos adicionar ao nosso MCU a opção A/D ou a opção A/D mais D/A, Analógico-Digital e Analógico-Digital mais Digital-Analógico respectivamente.\\[-0.7cm]
+\justify
+\quad
+A seguir de A/D ou D/A sempre temos um par de números seguidos de um b (a exemplo 10x10b), após algumas pesquisas os alunos acreditam que isso seja o número de bits e como em um conversor A/D estamos trabalhando com informações contínuas se tornando digitais, ou seja informações supostamente infinitas tornado-se finitas, quanto maior a quantidade de bits menor vai ser nosso erro.
+%----------------------------------------------------------OP Temperatures-------------------------------
+\section{ Operating Temperature }
+\justify
+\quad
+Essa seção trabalha com o intervalo de temperatura com o qual nosso MCU deve operar. Apesar desse critério parecer muito simples é importante prestar atenção ao propósito do MCU e avaliar o intervalo adequado.
+\subsection{ Produto Não Industrial }
+\justify
+\quad
+MCUs que funcionam a temperaturas de 0 até 85 graus celsius são considerados produtos para uso não industrial, para o nosso caso esses produtos são, provavelmente, os mais adequados. Conversando com o grupo que realizou o projeto de automação da planta de calor foi informado que o trocador poderia atingir valores altos de temperatura com o uso incorreto mas os alunos de IC não acreditam que o MCU estava em contato direto com esse trocador.
+\subsection{ Produto Industrial }
+\justify
+\quad
+MCUs que funcionam de temperaturas de -40 até 85 graus celsius (alguns podem chegar a marca de até 150 celsius) são considerados produtos industriais. Com grande probabilidade não será necessário usar produtos com faixas de temperaturas tão largas.\\[-0.7cm]
+\justify
+\quad
+É importante frisar que esses critérios foram fornecidos pelo site da DigiKey e pelas especificações padrão da AEC-Q100 temos que ter em mente que que alguns dos MCUs da família MSP430 não seguem essas normas à risca mas o grupo de alunos com auxílio dos professores será capaz de tomar decisões prudentes.
+%-------------------------------------------------------------------------Diagrama-----------------------
+\section{Functional Block Diagram MSP430G2x31/MSP430G2553}
+\justify
+\quad
+Nessa seção foi retirado um exemplo de MSP430 do pdf:
+$$http://www.ti.com/lit/ds/symlink/msp430g2121.pdf$$, para ilustrar o exemplo foi retirado um bloco digrama:
+\subsection{Diagrama do Bloco MSP430G2x31}
+
+\includegraphics{Esquema}
+
+\subsection{Diagrama do Bloco MSP430G2553}
+
+\includegraphics{Esquema2}
+
+\subsection{Escolha Baseada no Diagrama de Blocos}
+\justify
+\quad
+Pelo diagrama de blocos foi possível observar que o MSP430G2553 se encaixa melhor para o modelo escolhido pelo grupo. Essa escolha e suas especificações serão apresentadas na conclusão.\\[-0.7cm]
+\justify
+\quad
+A segunda imagem do Diagrama de Bloco foi retirada do site:
+$$http://www.ti.com/product/MSP430G2553$$
+
+%--------------------------------------------------------------------------FIm-------------------------
+\section{ Conclusão }
+\justify
+\quad
+Após ponderar os vários quesitos analisados acima, chegamos à conclusão de que o melhor MCU a ser utilizado é o \textbf{MSP430G2xx}, por sua simplicidade e eficiência.
+\pagebreak
+\begin{thebibliography}{}
+\bibitem {digikey}http://www.digikey.com/catalog/en/partgroup/msp430f550x-and-msp430f5510/53013 \\
+\bibitem {optimumdesign}http://blog.optimumdesign.com/cut-tape-vs.-tape-and-reel-a-component-packaging-type-comparison \\
+\bibitem {wikipedia}https://en.wikipedia.org/wiki/Integrated\_circuit \\
+\bibitem {hardware}http://www.hardware.com.br/termos/irda \\
+\bibitem {electronicshub}http://www.electronicshub.org/microcontrollers/ \\
+\bibitem {digikey}http://www.digikey.com/products/en/integrated-circuits-ics/embedded-microcontrollers/ 685?k\=\&pkeyword=\&s\=31749\&FV\=ffe002ad\%2Cfffc0128\&mnonly\=0\&\\newproducts=0\&ColumnSort\=0\&page\=1\&quantity\=0\&ptm\=0\&fid\=0\&pageSize=25 \\
+\bibitem {novaeletronica}http://blog.novaeletronica.com.br/qual-diferenca-entre-microprocessador-e-microcontrolador/ \\
+\bibitem {maximintegrated}https://www.maximintegrated.com/en/app-notes/index.mvp/id/801#q1.2 \\
+\bibitem {eleceng}http://eleceng.dit.ie/frank/msp430/msp430.pdf \\
+\bibitem {microchip}http://www.microchip.com/design-centers/lin \\
+\bibitem {wikipedia}https://en.wikipedia.org/wiki/Flash\_memory \\
+\bibitem {wikipedia}https://en.wikipedia.org/wiki/EEPROM \\
+\bibitem {joinville}http://www.joinville.udesc.br/portal/professores/eduardo\_henrique/materiais/apostila\_micro\_\\do\_Gustavo\_Weber.pdf \\
+\bibitem {instructables}http://www.instructables.com/id/How-to-choose-a-MicroController/?ALLSTEPS \\
+\bibitem {ti} http : //www.ti.com/product/MSP430G2553 \\
+\bibitem {ti} http : //www.ti.com/lit/ds/symlink/msp430g2121.pdf \\
+\bibitem http://www.ti.com/lit/ds/symlink/msp430g2253.pdf \\
+
+\end{thebibliography}
+
+
+\end{document}
